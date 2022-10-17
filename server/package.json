@@ -1,0 +1,23 @@
+{
+  "name": "gameshub",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bearom95/gamesHub.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bearom95/gamesHub/issues"
+  },
+  "homepage": "https://github.com/bearom95/gamesHub#readme",
+  "dependencies": {
+    "json-server": "^0.17.0"
+  }
+}

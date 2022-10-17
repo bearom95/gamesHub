@@ -1,0 +1,19 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    display: flex;
+    flex-wrap: wrap;
+    height: 2rem;
+    justify-content: right;
+    padding: 0.7rem;
+}
+
+#colorBtn {
+    border-radius: 1rem;
+    padding: 0 2rem;
+    margin: 0 1rem;
+    font-size: large;
+}
