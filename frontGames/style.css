@@ -13,7 +13,6 @@
   }
 
 
-
 header {
     display: flex;
     flex-wrap: wrap;
@@ -29,4 +28,8 @@ header {
     font-size: 2rem;
     font-family: "Arcade";
     text-align: center;
+    cursor: pointer;
+    vertical-align: middle;
+    /* meter gif de background */
 }
+

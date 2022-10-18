@@ -1,9 +1,11 @@
 import "./loginstyle.css";
 import { startMenuPage } from "../../pages/menuPage";
 
+//poner primera condicion del landlogin que si localstorage.name entonces, directamente inicie menuPage
+
 export const landLogin = () => {
   const maindiv = document.createElement("div");
-  maindiv.classList.add("maindiv"); //meter id de manera dinamica: div.id="mi-div" en vez de setattribute
+  maindiv.classList.add("maindiv");
   const app = document.querySelector("#app");
   app.appendChild(maindiv);
   const loginDiv = document.createElement("div");
