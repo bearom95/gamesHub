@@ -3,37 +3,59 @@ import { startMenuPage } from "../../pages/menuPage";
 
 export const landLogin = () => {
   const maindiv = document.createElement("div");
-  maindiv.classList.add("maindiv");
+  maindiv.classList.add("maindiv"); //meter id de manera dinamica: div.id="mi-div" en vez de setattribute
   const app = document.querySelector("#app");
   app.appendChild(maindiv);
   const loginDiv = document.createElement("div");
   loginDiv.classList.add("logindiv");
   maindiv.appendChild(loginDiv);
   loginDiv.innerHTML = `
-        <h1>Welcome to Games Hub</h1>
+        <p class="welcomep">Welcome to Games Hub</p>
         <label for="inputName">Enter your name</label>
-        <input type="text" id="inputName" required></input>  
+        <input type="text" id="inputName"></input>  
         <button id="saveBtn">Log in</button>
     `;
-  const saveName = (person) => {
-    localStorage.setItem("name", person); //hago que en el localstorage se guarde un item con clave nombre-nombremetido
-    if (typeof person !== "string") {
-      const pwelcome = document.createElement("p");
-      pwelcome.innerText = `${person} is not a name`;
-      loginDiv.appendChild(pwelcome); //PREGUNTA, COMO HACER PARA QUE PILLE LO DEL NUMERO
-    } else if (person.length < 1) {
-      const pwelcome = document.createElement("p");
-      pwelcome.innerText = `Insert a name`; //PREGUNTA, COMO HACER PARA QUE NO IMPRIMA EL MENSAJE SIEMPRE
-      loginDiv.appendChild(pwelcome);
-    } else {
-      startMenuPage(person);
-    }
 
-    //inputName.pattern !== "[A-Za-z]{1,10}"
-    /* } else {
-      const pwelcome2 = document.createElement("p");
-      pwelcome2.innerText = `Welcome ${person}`;
-      loginDiv.appendChild(pwelcome2); */
+  /*   saveName hace que en el localstorage se guarde un item con clave nombre-nombremetido
+  además mira si se cumples ciertas condiciones y luego hace que se vaya a la siguiente página de menú
+  las condiciones: si no hay nada, un mensaje. Si hay números otro. Pero ademas, para que no nos imprima
+  el mensaje cada vez que le damos al boton de LOG-IN, le hemos puesto la condicion de que si existe algo con 
+  el id #errorp, entonces primero nos lo quite y luego ya ejecute el error */
+
+  //SOLO QUEDA QUE DEJE METER SOLO LETRAS
+
+  const errorEmpty = () => {
+    const errorp = document.createElement("p");
+    errorp.id = "errorp";
+    errorp.innerText = `Insert a name`;
+    loginDiv.appendChild(errorp);
+  };
+  const saveName = (person) => {
+    localStorage.setItem("name", person);
+    if (person.length < 1) {
+      if (document.querySelector("#errorp")) {
+        loginDiv.lastChild.remove();
+        errorEmpty();
+      } else {
+        errorEmpty();
+      }
+    } else if (!person.match("[A-Za-z]")) {
+      if (document.querySelector("#errorp")) {
+        loginDiv.lastChild.remove();
+        const errorNumbers = () => {
+          //alojamos el error en una funcion para poder reutilizarlo
+          const errorp = document.createElement("p");
+          errorp.id = "errorp";
+          errorp.innerText = `${person} is not a name`;
+          loginDiv.appendChild(errorp);
+        };
+        errorNumbers();
+      } else {
+        errorNumbers();
+      }
+    } else {
+      startMenuPage();
+    }
   };
   const saveBtn = document.querySelector("#saveBtn");
   const inputName = document.querySelector("#inputName");

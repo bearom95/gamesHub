@@ -1,6 +1,17 @@
 
 .logindiv {
-    background-color: blue;
+    background-color: whitesmoke;
     padding: 5rem;
     margin: 4rem;
+    font-family: 'Capriola', sans-serif;
+
+}
+
+.logindiv > .welcomep {
+    font-family: "Arcade";
+    font-size: 4rem;
+}
+
+.logindiv > button {
+    font-family: 'Capriola', sans-serif;
 }

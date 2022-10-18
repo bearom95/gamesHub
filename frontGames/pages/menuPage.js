@@ -1,9 +1,17 @@
 import { cleanPage } from "../utils/cleanpage";
+import { getPokemons } from "./pokemonPage";
 
-export const startMenuPage = (person) => {
-  const maindiv = document.querySelector(".maindiv");
+export const startMenuPage = () => {
+  const maindiv = document.querySelector(".maindiv"); //recoger nombre con getitem???
   cleanPage(maindiv);
-  maindiv.innerHTML = `<p>Hola ${person}</p>`;
+  const header = document.querySelector("header");
+  const loggedP = document.createElement("p");
+  header.insertAdjacentElement("afterbegin", loggedP);
+  loggedP.innerHTML = `<p>Hola ${localStorage.name}</p>`;
+  const pokeapiBtn = document.createElement("button");
+  pokeapiBtn.innerText = "Pokeapi btn";
+  maindiv.appendChild(pokeapiBtn);
+  pokeapiBtn.addEventListener("click", () => getPokemons());
+
+  //aqui añadir el event listener del boton que me lleva  a la pokeapi
 };
-//mantener siempre el name????
-//crear un div para mantener siempre el nombre y otro en el que se van cabiando los juegos O poner el welcome+name en el header
