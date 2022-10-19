@@ -1,7 +1,8 @@
+import { initSelector } from "../components/pokemonNav/pokemonNav";
 import { cleanPage } from "../utils/cleanpage";
 import "./pokemonPage.css";
 
-let mappedPokemons;
+export let mappedPokemons;
 
 export const getPokemons = async (i) => {
   const maindiv = document.querySelector(".maindiv");
@@ -10,13 +11,9 @@ export const getPokemons = async (i) => {
       <div id="pokeTitle" class="pokeTitle">
         <div class="logocontainer"></div>
         <div class="searchcontainer" id="searchcontainer">
-          <input type="text" class="searchPokemon" id="searchPokemon"/>
-          <button class="btnFindPokemon" id=class="btnFindPokemon">Find a pokemon</button>
+          <input type="text" class="searchPokemon" id="searchPokemon" placeholder="Look for your Pokemon"/>
         </div>
-        <div class="btnsTypesContainer" id="btnsTypesContainer">
-          <button>Grass</button>
-          <button>Water</button>
-        </div>
+        <select id="selector"></select>
       </div>
       <div class="allpokecards" id="allpokecards"></div>`;
   let pokemonArray = [];
@@ -75,4 +72,5 @@ const printData = (mappedArray, word) => {
   searchInput.addEventListener("input", (ev) =>
     printData(mappedPokemons, ev.target.value)
   );
+  initSelector();
 };
