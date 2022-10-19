@@ -42,19 +42,18 @@ export const landLogin = () => {
       } else {
         errorEmpty();
       }
-    } else if (!person.match("[A-Za-z]")) {
+    } else if (!person.match(/^[a-zA-Z]+$/)) {
       if (document.querySelector("#errorp")) {
         loginDiv.lastChild.remove();
-        const errorNumbers = () => {
-          //alojamos el error en una funcion para poder reutilizarlo
-          const errorp = document.createElement("p");
-          errorp.id = "errorp";
-          errorp.innerText = `${person} is not a name`;
-          loginDiv.appendChild(errorp);
-        };
-        errorNumbers();
+        const errorp = document.createElement("p");
+        errorp.id = "errorp";
+        errorp.innerText = `${person} is not a name`;
+        loginDiv.appendChild(errorp);
       } else {
-        errorNumbers();
+        const errorp = document.createElement("p");
+        errorp.id = "errorp";
+        errorp.innerText = `${person} is not a name`;
+        loginDiv.appendChild(errorp);
       }
     } else {
       startMenuPage();
