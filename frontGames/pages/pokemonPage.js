@@ -17,7 +17,7 @@ export const getPokemons = async (i) => {
 const transformData = (list) => {
   const mappedPokes = list.map((item) => ({
     id: item.id,
-    name: item.name,
+    name: item.name.charAt(0).toUpperCase() + item.name.slice(1),
     experience: item.base_experience,
     height: item.height,
     weight: item.weight,
