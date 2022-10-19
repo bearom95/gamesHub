@@ -15,7 +15,7 @@ export const getPokemons = async (i) => {
         </div>
         <div class="btnsTypesContainer" id="btnsTypesContainer">
           <button>Grass</button>
-          <button>Grass</button>
+          <button>Water</button>
         </div>
       </div>
       <div class="allpokecards" id="allpokecards"></div>`;
@@ -64,6 +64,7 @@ const printData = (mappedArray, word) => {
     const pokeCard = document.createElement("div");
     allPokeCards.appendChild(pokeCard);
     pokeCard.id = "pokecard";
+    pokeCard.classList.add(`${element.type}`);
     pokeCard.innerHTML = `
         <h1>${element.name}</h1>
         <img src="${element.image3}" alt="${element.name3}"/>
