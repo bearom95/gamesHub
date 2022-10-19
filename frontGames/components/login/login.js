@@ -24,9 +24,6 @@ export const landLogin = () => {
   el mensaje cada vez que le damos al boton de LOG-IN, le hemos puesto la condicion de que si existe algo con 
   el id #errorp, entonces primero nos lo quite y luego ya ejecute el error */
 
-  //SOLO QUEDA QUE DEJE METER SOLO LETRAS
-  //ademas cuando de primeras ponemos un numero no muestra el mensaje, da error en consola de que errorNumbers is not defined
-
   const errorEmpty = () => {
     const errorp = document.createElement("p");
     errorp.id = "errorp";

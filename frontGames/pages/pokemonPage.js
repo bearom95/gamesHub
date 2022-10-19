@@ -1,36 +1,9 @@
 import { cleanPage } from "../utils/cleanpage";
 import "./pokemonPage.css";
 
-export const getPokemons = async (i) => {
-  let pokemonArray = [];
-  for (i = 1; i <= 151; i++) {
-    try {
-      const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${i}/`);
-      const dataToJson = await response.json();
-      pokemonArray.push(dataToJson);
-    } catch (error) {
-      console.log(error);
-    }
-  }
-  transformData(pokemonArray);
-};
-const transformData = (list) => {
-  const mappedPokes = list.map((item) => ({
-    id: item.id,
-    name: item.name.charAt(0).toUpperCase() + item.name.slice(1),
-    experience: item.base_experience,
-    height: item.height,
-    weight: item.weight,
-    type: item.types[0].type.name,
-    /* type2: item.types[1].type.name, */
-    image: item.sprites.other.dream_world.front_default,
-    image2: item.sprites.other.home.front_default,
-    image3: item.sprites.other["official-artwork"].front_default,
-  }));
-  printData(mappedPokes);
-};
+let mappedPokemons;
 
-const printData = (mappedArray) => {
+export const getPokemons = async (i) => {
   const maindiv = document.querySelector(".maindiv");
   cleanPage(maindiv);
   maindiv.innerHTML = `
@@ -46,6 +19,40 @@ const printData = (mappedArray) => {
         </div>
       </div>
       <div class="allpokecards" id="allpokecards"></div>`;
+  let pokemonArray = [];
+  for (i = 1; i <= 151; i++) {
+    try {
+      const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${i}/`);
+      const dataToJson = await response.json();
+      pokemonArray.push(dataToJson);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  transformData(pokemonArray);
+};
+const transformData = (list) => {
+  mappedPokemons = list.map((item) => ({
+    id: item.id,
+    name: item.name.charAt(0).toUpperCase() + item.name.slice(1),
+    experience: item.base_experience,
+    height: item.height,
+    weight: item.weight,
+    type: item.types[0].type.name,
+    /* type2: item.types[1].type.name, */
+    image: item.sprites.other.dream_world.front_default,
+    image2: item.sprites.other.home.front_default,
+    image3: item.sprites.other["official-artwork"].front_default,
+  }));
+  printData(mappedPokemons, "");
+};
+
+const printData = (mappedArray, word) => {
+  const allPokeCards = document.querySelector("#allpokecards");
+  cleanPage(allPokeCards);
+  const filteredPokemons = mappedArray.filter((element) =>
+    element.name.toLowerCase().includes(word.toLowerCase())
+  );
 
   /* const pokeTitle = document.createElement("h1");
   maindiv.appendChild(pokeTitle);
@@ -53,9 +60,8 @@ const printData = (mappedArray) => {
   maindiv.appendChild(allPokeCards);
  */
 
-  mappedArray.forEach((element) => {
+  filteredPokemons.forEach((element) => {
     const pokeCard = document.createElement("div");
-    const allPokeCards = document.querySelector("#allpokecards");
     allPokeCards.appendChild(pokeCard);
     pokeCard.id = "pokecard";
     pokeCard.innerHTML = `
@@ -64,4 +70,8 @@ const printData = (mappedArray) => {
         <p>${element.type}</p>`;
     //por cada pokemos crear una tarjeta
   });
+  const searchInput = document.querySelector("#searchPokemon");
+  searchInput.addEventListener("input", (ev) =>
+    printData(mappedPokemons, ev.target.value)
+  );
 };
