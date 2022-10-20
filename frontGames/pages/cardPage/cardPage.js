@@ -1,3 +1,5 @@
+import { cleanPage } from "../../utils/cleanpage";
+
 export const pokemonCard = (item) => {
   const maindiv = document.querySelector(".maindiv");
   cleanPage(maindiv);

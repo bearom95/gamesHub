@@ -1,5 +1,6 @@
 import { initSelector } from "../../components/pokemonNav/pokemonNav";
 import { cleanPage } from "../../utils/cleanpage";
+import { pokemonCard } from "../cardPage/cardPage";
 import "./pokemonPage.css";
 
 export let mappedPokemons;
@@ -68,13 +69,9 @@ const printData = (mappedArray, word) => {
         <h1>${element.name}</h1>
         <img src="${element.image3}" alt="${element.name3}"/>
         <p>Base experience: ${element.experience}</p>`;
+
+    pokeCard.addEventListener("click", () => pokemonCard(element));
   });
-  /* pokeCard.addEventListener("click", (evento) => {
-    const pokemon = mappedArray.find(
-      (element) => element.name === evento.path[0].className
-    );
-    pokemonCard(pokemon);
-  }); */
 
   const searchInput = document.querySelector("#searchPokemon");
   searchInput.addEventListener("input", (ev) =>
