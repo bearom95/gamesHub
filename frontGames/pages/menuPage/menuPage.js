@@ -1,5 +1,5 @@
-import { cleanPage } from "../utils/cleanpage";
-import { getPokemons } from "./pokemonPage";
+import { cleanPage } from "../../utils/cleanpage";
+import { getPokemons } from "../pokemonPage/pokemonPage";
 
 export const startMenuPage = () => {
   const maindiv = document.querySelector(".maindiv"); //recoger nombre con getitem???
@@ -7,7 +7,7 @@ export const startMenuPage = () => {
   const header = document.querySelector("header");
   const loggedP = document.createElement("p");
   header.insertAdjacentElement("afterbegin", loggedP);
-  loggedP.innerHTML = `<p>Hola ${localStorage.name}</p>`;
+  loggedP.innerHTML = `<p>Let's play ${localStorage.name}!</p>`;
   const pokeapiBtn = document.createElement("button");
   pokeapiBtn.innerText = "Pokeapi btn";
   maindiv.appendChild(pokeapiBtn);

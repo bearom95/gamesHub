@@ -1,4 +1,4 @@
-import { mappedPokemons } from "../../pages/pokemonPage";
+import { mappedPokemons } from "../../pages/pokemonPage/pokemonPage";
 
 export const initSelector = () => {
   let allTypesArray = [];

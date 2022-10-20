@@ -1,5 +1,5 @@
 import "./loginstyle.css";
-import { startMenuPage } from "../../pages/menuPage";
+import { startMenuPage } from "../../pages/menuPage/menuPage";
 
 //poner primera condicion del landlogin que si localstorage.name entonces, directamente inicie menuPage
 

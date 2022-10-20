@@ -1,5 +1,5 @@
-import { initSelector } from "../components/pokemonNav/pokemonNav";
-import { cleanPage } from "../utils/cleanpage";
+import { initSelector } from "../../components/pokemonNav/pokemonNav";
+import { cleanPage } from "../../utils/cleanpage";
 import "./pokemonPage.css";
 
 export let mappedPokemons;
@@ -12,8 +12,10 @@ export const getPokemons = async (i) => {
         <div class="logocontainer"></div>
         <div class="searchcontainer" id="searchcontainer">
           <input type="text" class="searchPokemon" id="searchPokemon" placeholder="Look for your Pokemon"/>
+          <select id="selector" class="selector">
+            <option disabled selected>Pokemon type</option>
+          </select>
         </div>
-        <select id="selector"></select>
       </div>
       <div class="allpokecards" id="allpokecards"></div>`;
   let pokemonArray = [];
@@ -65,9 +67,15 @@ const printData = (mappedArray, word) => {
     pokeCard.innerHTML = `
         <h1>${element.name}</h1>
         <img src="${element.image3}" alt="${element.name3}"/>
-        <p>${element.type}</p>`;
-    //por cada pokemos crear una tarjeta
+        <p>Base experience: ${element.experience}</p>`;
   });
+  /* pokeCard.addEventListener("click", (evento) => {
+    const pokemon = mappedArray.find(
+      (element) => element.name === evento.path[0].className
+    );
+    pokemonCard(pokemon);
+  }); */
+
   const searchInput = document.querySelector("#searchPokemon");
   searchInput.addEventListener("input", (ev) =>
     printData(mappedPokemons, ev.target.value)

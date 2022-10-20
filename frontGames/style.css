@@ -13,18 +13,18 @@
   }
 
    
-
-  /* este header necesita una altura distinta, y el maindiv tambien */
 header {
     display: flex;
     flex-wrap: wrap;
     height: 2rem;
     justify-content: right;
     padding: 0.7rem;
+    align-items: center;
 }
 
 header > p {
-    font-size: 2rem;
+    font-size: 1.5rem;
+    
 }
 
 #colorBtn {

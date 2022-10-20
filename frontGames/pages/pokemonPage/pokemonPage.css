@@ -1,20 +1,20 @@
 .maindiv {
     justify-content: center;
     align-items: center;
-  /*   height: 100vh; */
     display: flex;
     flex-wrap: wrap;
 }
 
 
 .pokeTitle {
-    height: 7rem;
     width: 100%;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    
 }
+
 
 .pokeTitle > .logocontainer {
     background-image: url("https://res.cloudinary.com/dbdj2oecy/image/upload/v1666169823/pngegg_awflvi.png");
@@ -25,19 +25,40 @@
 }
 
 
-/* .searchcontainer  */
+.searchcontainer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1.5rem;
+    margin-left: 1rem;
+}
 
 .searchPokemon {
     height: 1.8rem;
-   }
+    margin: 0;
+    
+    border-radius: 0.7rem;
+    text-align: center;
+    background-color: #ffffffb4;
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;   }
+::placeholder {
+    color:#94946e;
+    text-align: center;
+}
+
    
-.btnFindPokemon {
-       height: 1.8rem;
-   }
+.selector {
+    width: 8rem;
+    margin-right: 1rem;
+    height: 1.8rem;
+    border-radius: 0.7rem;
+    text-align: center;
+    background-color: #ffffffb4;
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;   }
+   
 
-/* .btnsTypesContainer
-
- */
 
 .allpokecards {
     width: 100%;
@@ -46,9 +67,9 @@
     justify-content: center;
     padding: 0 3rem;
 }
-
+ 
 #pokecard {
-    height: 20rem;
+    height: 22rem;
     width: 18rem;
     padding: 0.5rem;
     margin: 1rem;
@@ -66,18 +87,10 @@
     background-color: aliceblue;
     border-radius: 1rem;
     margin: 0.5rem 0rem;
+    filter: saturate(200%); 
 }
 
 
-/* .grass {
-    background-color: #204000;
-}
-.fire {
-    background-color: #F67E0D;
-}
-.water {
-
-} */
 
 .normal {
 	background-color: #d4b081;
