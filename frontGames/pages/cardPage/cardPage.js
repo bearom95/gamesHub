@@ -1,4 +1,5 @@
 import { cleanPage } from "../../utils/cleanpage";
+import { startMenuPage } from "../menuPage/menuPage";
 import "./cardPage.css";
 
 export const printPokemonCard = (item) => {
@@ -13,6 +14,7 @@ export const printPokemonCard = (item) => {
                 <p class="height">Height: ${item.height} m</p>
                 <p class="weight">Weight: ${item.weight} kg</p>
             </div>
-        </figure> 
+    </figure> 
     `;
+  callBtnMenu();
 };

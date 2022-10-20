@@ -1,3 +1,4 @@
+import { callBtnMenu } from "../../components/menuButton";
 import { initSelector } from "../../components/pokemonNav/pokemonNav";
 import { cleanPage } from "../../utils/cleanpage";
 import { printPokemonCard } from "../cardPage/cardPage";
@@ -78,4 +79,5 @@ const printData = (mappedArray, word) => {
     printData(mappedPokemons, ev.target.value)
   );
   initSelector();
+  callBtnMenu();
 };
