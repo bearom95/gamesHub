@@ -1,5 +1,6 @@
 import { cleanPage } from "../../utils/cleanpage";
-import { startMenuPage } from "../menuPage/menuPage";
+/* import { startMenuPage } from "../menuPage/menuPage"; */
+import { callBtnMenu } from "../../components/menuButton";
 import "./cardPage.css";
 
 export const printPokemonCard = (item) => {

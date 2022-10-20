@@ -1,11 +1,13 @@
 import { cleanPage } from "../../utils/cleanpage";
 import { getPokemons } from "../pokemonPage/pokemonPage";
+import "./menuPage.css";
 
 export const startMenuPage = () => {
   const maindiv = document.querySelector(".maindiv"); //recoger nombre con getitem???
   cleanPage(maindiv);
-  const pokeapiBtn = document.createElement("button");
-  pokeapiBtn.innerText = "Pokeapi btn";
+  const pokeapiBtn = document.createElement("div");
+  /* pokeapiBtn.innerText = "Pokeapi btn"; */
+  pokeapiBtn.id = "pokeapiBtn";
   maindiv.appendChild(pokeapiBtn);
   pokeapiBtn.addEventListener("click", () => getPokemons());
   const header = document.querySelector("header");

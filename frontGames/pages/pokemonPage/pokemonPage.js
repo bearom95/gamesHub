@@ -45,23 +45,15 @@ const transformData = (list) => {
     image2: item.sprites.other.home.front_default,
     image3: item.sprites.other["official-artwork"].front_default,
   }));
-  printData(mappedPokemons, "");
+  printData(mappedPokemons);
+  searchBar(mappedPokemons, "");
+  initSelector();
 };
 
-const printData = (mappedArray, word) => {
+export const printData = (mappedArray) => {
   const allPokeCards = document.querySelector("#allpokecards");
   cleanPage(allPokeCards);
-  const filteredPokemons = mappedArray.filter((element) =>
-    element.name.toLowerCase().includes(word.toLowerCase())
-  );
-
-  /* const pokeTitle = document.createElement("h1");
-  maindiv.appendChild(pokeTitle);
-  const allPokeCards = document.createElement("div");
-  maindiv.appendChild(allPokeCards);
- */
-
-  filteredPokemons.forEach((element) => {
+  mappedArray.forEach((element) => {
     const pokeCard = document.createElement("div");
     allPokeCards.appendChild(pokeCard);
     pokeCard.id = "pokecard";
@@ -74,10 +66,19 @@ const printData = (mappedArray, word) => {
     pokeCard.addEventListener("click", () => printPokemonCard(element));
   });
 
-  const searchInput = document.querySelector("#searchPokemon");
-  searchInput.addEventListener("input", (ev) =>
-    printData(mappedPokemons, ev.target.value)
-  );
-  initSelector();
   callBtnMenu();
+};
+
+const searchBar = (list) => {
+  const searchInput = document.querySelector("#searchPokemon");
+  searchInput.addEventListener("input", (ev) => search(list, ev.target.value));
+};
+
+const search = (list, word) => {
+  const filteredPokemons = list.filter((element) =>
+    element.name.toLowerCase().includes(word.toLowerCase())
+  );
+  const allPokeCards = document.querySelector("#allpokecards");
+  allPokeCards.innerHTML = "";
+  printData(filteredPokemons);
 };

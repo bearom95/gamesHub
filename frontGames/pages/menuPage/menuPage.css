@@ -1,0 +1,16 @@
+#pokeapiBtn {
+    background-image: url("https://thumbs.gfycat.com/DampSpanishCleanerwrasse-max-1mb.gif");
+    height: 15rem;
+    width: 15rem;
+    border: solid rgba(253, 251, 251, 0.87) 0.2rem;
+    background-color: rgba(255, 255, 255, 0.685);
+    border-radius: 1.2rem;
+    background-size: contain;
+    cursor: pointer;
+    background-repeat: no-repeat;
+}
+
+#pokeapiBtn:hover{
+    box-shadow: 0 0 10px 0 #f3f8f8 inset, 0 0 20px 2px #f3f8f8;
+    border: 3px solid #f3f8f8;
+}
