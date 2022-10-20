@@ -6,7 +6,7 @@ que no todos los botones salgan con ese estilo */
 .maindiv {
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: calc(100vh - 3rem);
     display: flex;
     flex-wrap: wrap;
 }

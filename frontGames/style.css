@@ -16,7 +16,7 @@
 header {
     display: flex;
     flex-wrap: wrap;
-    height: 2rem;
+    height: 3rem; 
     justify-content: right;
     padding: 0.7rem;
     align-items: center;

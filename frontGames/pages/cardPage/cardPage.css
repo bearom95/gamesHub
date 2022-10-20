@@ -1,0 +1,33 @@
+/* maindiv.innerHTML = `
+    <figure class="pokemoncard"> 
+            <img class="${item.image3}" src="${item.image3}">
+            <div class="description">
+                <h2>${item.name}</h2>
+                <p class="indivType">Type: ${item.type}</p>
+                <p class="height">${item.height}</p>
+                <p class="weight">${item.weight}</p>
+            </div>
+        </figure> 
+    `; */
+
+
+    .pokemoncard {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        
+    }
+    .pokemoncard h2 {
+        text-transform: capitalize;
+    }
+
+    .pokemoncard > img {
+        filter: saturate(200%)
+        
+    }
+
+    .pokemoncard > .description {
+        background-color: aliceblue;
+        border-radius: 1rem;
+        padding: 1rem;
+    }

@@ -1,6 +1,7 @@
 import { cleanPage } from "../../utils/cleanpage";
+import "./cardPage.css";
 
-export const pokemonCard = (item) => {
+export const printPokemonCard = (item) => {
   const maindiv = document.querySelector(".maindiv");
   cleanPage(maindiv);
   maindiv.innerHTML = `
@@ -9,8 +10,8 @@ export const pokemonCard = (item) => {
             <div class="description">
                 <h2>${item.name}</h2>
                 <p class="indivType">Type: ${item.type}</p>
-                <p class="height">${item.height}</p>
-                <p class="weight">${item.weight}</p>
+                <p class="height">Height: ${item.height} m</p>
+                <p class="weight">Weight: ${item.weight} kg</p>
             </div>
         </figure> 
     `;

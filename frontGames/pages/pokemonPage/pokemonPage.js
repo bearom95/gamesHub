@@ -1,6 +1,6 @@
 import { initSelector } from "../../components/pokemonNav/pokemonNav";
 import { cleanPage } from "../../utils/cleanpage";
-import { pokemonCard } from "../cardPage/cardPage";
+import { printPokemonCard } from "../cardPage/cardPage";
 import "./pokemonPage.css";
 
 export let mappedPokemons;
@@ -34,10 +34,10 @@ export const getPokemons = async (i) => {
 const transformData = (list) => {
   mappedPokemons = list.map((item) => ({
     id: item.id,
-    name: item.name.charAt(0).toUpperCase() + item.name.slice(1),
+    name: item.name,
     experience: item.base_experience,
-    height: item.height,
-    weight: item.weight,
+    height: item.height / 10,
+    weight: item.weight / 10,
     type: item.types[0].type.name,
     /* type2: item.types[1].type.name, */
     image: item.sprites.other.dream_world.front_default,
@@ -70,7 +70,7 @@ const printData = (mappedArray, word) => {
         <img src="${element.image3}" alt="${element.name3}"/>
         <p>Base experience: ${element.experience}</p>`;
 
-    pokeCard.addEventListener("click", () => pokemonCard(element));
+    pokeCard.addEventListener("click", () => printPokemonCard(element));
   });
 
   const searchInput = document.querySelector("#searchPokemon");
