@@ -1,0 +1,11 @@
+.questionDiv {
+    height: 18rem;
+    width: 25rem;
+    background-color: rgba(245, 245, 245, 0.705);
+    padding: 2rem;
+    border-radius: 1rem;
+}
+
+.questionDiv > h2 {
+    height: 5.2rem;
+}
