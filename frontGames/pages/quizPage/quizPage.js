@@ -25,6 +25,7 @@ const checkAnswer = (objeto, clave) => {
   /* console.log(pos); */
   if (pos == allQuestions.length - 1) {
     const endDiv = document.createElement("div");
+    endDiv.classList.add("endDiv");
     let maindiv = document.querySelector(".maindiv");
     cleanPage(maindiv);
     maindiv.appendChild(endDiv);
@@ -52,11 +53,17 @@ const checkAnswer = (objeto, clave) => {
 
 const printCheckQuestion = (list, value) => {
   const element = list[value];
+  let questionScoreContainer = document.createElement("div");
+  questionScoreContainer.classList.add("questionScoreContainer");
   let questionDiv = document.createElement("div");
   questionDiv.classList.add("questionDiv");
   let maindiv = document.querySelector(".maindiv");
   cleanPage(maindiv);
-  maindiv.appendChild(questionDiv);
+  maindiv.appendChild(questionScoreContainer);
+  questionScoreContainer.appendChild(questionDiv);
+  let scoreSpan = document.createElement("span");
+  scoreSpan.innerText = `${score}/10`;
+  questionDiv.insertAdjacentElement("afterend", scoreSpan);
   questionDiv.innerHTML = `
     <h2 id="questionSentence">${pos + 1}. ${element.question}</h2>
     `;

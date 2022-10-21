@@ -1,11 +1,38 @@
+.questionScoreContainer {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
 .questionDiv {
-    height: 18rem;
+    /* height: 18rem; */
     width: 25rem;
     background-color: rgba(245, 245, 245, 0.705);
     padding: 2rem;
     border-radius: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 }
 
 .questionDiv > h2 {
-    height: 5.2rem;
+    height: 5.2rem; 
+}
+
+span {
+    padding: 1rem;
+    text-align: center;
+} 
+
+.endDiv {
+    height: 5rem;
+    width: 25rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(245, 245, 245, 0.705);
+    padding: 1rem;
+    border-radius: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 }
