@@ -8,9 +8,30 @@
     background-size: contain;
     cursor: pointer;
     background-repeat: no-repeat;
+    margin: 1rem;
 }
 
 #pokeapiBtn:hover{
     box-shadow: 0 0 10px 0 #f3f8f8 inset, 0 0 20px 2px #f3f8f8;
     border: 3px solid #f3f8f8;
 }
+
+#quizBtn {
+    background-image: url("https://t6k8i7j6.stackpathcdn.com/wp-content/uploads/2021/11/quiztime-title-mobile-retina.gif");
+    height: 15rem;
+    width: 15rem;
+    border: solid rgba(253, 251, 251, 0.87) 0.2rem;
+    background-color: rgba(255, 255, 255, 0.685);
+    background-position: center;
+    border-radius: 1.2rem;
+    background-size: contain;
+    cursor: pointer;
+    background-repeat: no-repeat;
+    margin: 1rem;
+}
+
+#quizBtn:hover{
+    box-shadow: 0 0 10px 0 #f3f8f8 inset, 0 0 20px 2px #f3f8f8;
+    border: 3px solid #f3f8f8;
+}
+
