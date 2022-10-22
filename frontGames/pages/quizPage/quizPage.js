@@ -1,5 +1,5 @@
 import "./quizPage.css";
-import { allQuestions } from "../../quizQuestions";
+import { allQuestions } from "./quizQuestions";
 import { cleanPage } from "../../utils/cleanpage";
 import { callBtnMenu } from "../../components/menuButton";
 
@@ -18,8 +18,6 @@ export const getQuiz = () => {
     printCheckQuestion(allQuestions, pos)
   );
 };
-
-//<span class="score">0</span> si quisiera incluir el contador al principio
 
 const checkAnswer = (objeto, clave) => {
   /* console.log(pos); */

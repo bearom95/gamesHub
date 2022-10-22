@@ -1,4 +1,5 @@
 import { cleanPage } from "../../utils/cleanpage";
+import { getHangman } from "../hangmanPage/hangman";
 import { getPokemons } from "../pokemonPage/pokemonPage";
 import { getQuiz } from "../quizPage/quizPage";
 import "./menuPage.css";
@@ -16,6 +17,11 @@ export const startMenuPage = () => {
   quizBtn.id = "quizBtn";
   maindiv.appendChild(quizBtn);
   quizBtn.addEventListener("click", () => getQuiz());
+
+  const hangmanBtn = document.createElement("div");
+  hangmanBtn.id = "hangmanBtn";
+  maindiv.appendChild(hangmanBtn);
+  hangmanBtn.addEventListener("click", () => getHangman());
 
   const header = document.querySelector("header");
   if (document.querySelector("#loggedP")) {

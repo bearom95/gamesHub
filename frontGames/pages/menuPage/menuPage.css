@@ -35,3 +35,15 @@
     border: 3px solid #f3f8f8;
 }
 
+#hangmanBtn {
+    background-image: url("https://i.pinimg.com/originals/2c/9d/f1/2c9df111e0234f886a8a6fef1dcccde5.gif");
+    height: 15rem;
+    width: 15rem;
+    border: solid rgba(253, 251, 251, 0.87) 0.2rem;
+    background-color: rgba(255, 255, 255, 0.685);
+    border-radius: 1.2rem;
+    background-size: cover;
+    cursor: pointer;
+    background-repeat: no-repeat;
+    margin: 1rem;
+}
