@@ -1,50 +1,91 @@
 import { cleanPage } from "../../utils/cleanpage";
 import { callBtnMenu } from "../../components/menuButton";
 import { allWords } from "./hangWords";
+import "./hangman.css";
 
 let position = 0;
+let score = 5;
 
-const getRandomWord = (array) => {
+function getSpaces(array) {
   let word = array[position];
-  let wordcontainer = document.querySelector("#wordcontainer");
-  const wordSpace = document.createElement("p");
-  wordSpace.classList.add("hiddenWord");
-  /* wordSpace.innerText = word; */
-  wordcontainer.appendChild(wordSpace);
-  //word es la palabra buscada, for letter of word
-
+  let index = 0;
+  score = 5;
   for (const letter of word) {
     let emptyLetter = document.createElement("p");
+    emptyLetter.classList.add("emptyLetter");
+    emptyLetter.id = index;
     emptyLetter.innerText = "_";
+    const wordSpace = document.querySelector(".hiddenWord");
     wordSpace.appendChild(emptyLetter);
+    index++;
+  }
+}
+const checkLetter = (array, chosenLetter) => {
+  let wordi = array[position];
+  let index = 0;
 
-    // aqui debo llamar a la funcion checkLetter, que debemos crear fuera (no se en que lugar),
-    //puede que arriba??esta funcion es la que me compara si la letra es igual a la que se ha metido
-    //de ser asi, hace que el _ se convierta en la letra y si no, le baja al score un punto, hay que crear score en 5
-    if (letter == chosenLetter) {
-      emptyLetter.innerText = chosenLetter;
+  for (const letter of wordi) {
+    let emptyLetter = document.getElementById(index);
+    if (letter.toLowerCase() == chosenLetter) {
+      emptyLetter.innerText = `${chosenLetter}`;
     }
+    index++;
   }
 
+  if (
+    wordi.includes(chosenLetter) == false &&
+    chosenLetter.match(/^[a-zA-Z]+$/) /* chosenLetter != "" */
+  ) {
+    score = score - 1;
+    //para este checkeo está en realidad tomando como wordi otra palabra
+    //la posicion se ha incrementado
+  }
+  if (document.querySelector("span")) {
+    document.querySelector("span").remove();
+    let gameContainer = document.querySelector("#gameContainer");
+    let scoreSpan = document.createElement("span");
+    scoreSpan.innerText = `${score}/5`;
+    gameContainer.insertAdjacentElement("beforeend", scoreSpan);
+  } else {
+    let gameContainer = document.querySelector("#gameContainer");
+    let scoreSpan = document.createElement("span");
+    scoreSpan.innerText = `${score}/5`;
+    gameContainer.insertAdjacentElement("beforeend", scoreSpan);
+  }
+
+  console.log(score);
+};
+
+function getWord(array) {
+  score = 5;
+  let word = array[position];
+  if (position == array.length - 1) {
+    position = 0;
+  } else {
+    position += 1;
+  }
+  return word;
+}
+
+function createWordDiv() {
+  let wordcontainer = document.querySelector("#wordcontainer");
+  const wordSpace = document.createElement("div");
+  wordSpace.classList.add("hiddenWord");
+  wordcontainer.appendChild(wordSpace);
   if (document.querySelector(".hiddenWord")) {
     cleanPage(wordcontainer);
     wordcontainer.appendChild(wordSpace);
   } else {
     wordcontainer.appendChild(wordSpace);
   }
-  if (position == array.length - 1) {
-    position = 0;
-  } else {
-    position += 1;
-  }
-};
+}
 
 const chargeCategory = (categories, selectedCategory) => {
   let maindiv = document.querySelector(".maindiv");
   cleanPage(maindiv);
   maindiv.innerHTML = `
     <div id="gameContainer">
-        <p>${selectedCategory}</p>
+        <p class="titleCategory">${selectedCategory}</p>
         <div id="wordcontainer">
         
         </div>
@@ -53,21 +94,41 @@ const chargeCategory = (categories, selectedCategory) => {
     </div>
   `;
 
-  /*  for (let subelement of categories[selectedCategory]) {
-    console.log(subelement);
-  } */
-  getRandomWord(categories[selectedCategory]);
-  const nextBtn = document.querySelector("#nextBtn");
-  nextBtn.addEventListener("click", () =>
-    getRandomWord(categories[selectedCategory])
-  );
+  createWordDiv();
+  let word = categories[selectedCategory];
+  getSpaces(word);
 
-  //este event listener va aqui pero tiene que llamar a una funcion, por ejemplo: checkLetter
-  //a esa funcion se le pasa por parametro evento.target.value, en vez de igualarlo a una const
+  const nextBtn = document.querySelector("#nextBtn");
+  nextBtn.addEventListener("click", () => {
+    score = 5;
+    createWordDiv();
+    let word = getWord(categories[selectedCategory]);
+    getSpaces(categories[selectedCategory]);
+
+    if (document.querySelector("span")) {
+      document.querySelector("span").remove();
+      let gameContainer = document.querySelector("#gameContainer");
+      let scoreSpan = document.createElement("span");
+      scoreSpan.innerText = `${score}/5`;
+      gameContainer.insertAdjacentElement("beforeend", scoreSpan);
+    } else {
+      let gameContainer = document.querySelector("#gameContainer");
+      let scoreSpan = document.createElement("span");
+      scoreSpan.innerText = `${score}/5`;
+      gameContainer.insertAdjacentElement("beforeend", scoreSpan);
+    }
+
+    let inputLetter = document.querySelector("#inputLetter");
+    inputLetter.addEventListener("input", (evento) => {
+      let chosenLetter = evento.target.value;
+      checkLetter(categories[selectedCategory], chosenLetter);
+    });
+  });
+
   let inputLetter = document.querySelector("#inputLetter");
   inputLetter.addEventListener("input", (evento) => {
     let chosenLetter = evento.target.value;
-    console.log(chosenLetter);
+    checkLetter(word, chosenLetter);
   });
 };
 
@@ -97,9 +158,3 @@ const printBtns = (object) => {
     );
   }
 };
-
-/* <button id="colorsBtn">Colors</button>
-<button id="animalsBtn">Animals</button>
-<button id="thingsBtn">Things</button>
-<button id="foodBtn">Food</button>
-<button id="countriesBtn">Countries</button> */

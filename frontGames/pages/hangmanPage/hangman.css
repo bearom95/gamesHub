@@ -1,0 +1,43 @@
+#gameContainer {
+    width: 20rem;
+    height: 22rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: rgba(245, 245, 245, 0.705);
+    border-radius: 1rem;
+}
+
+.titleCategory {
+text-transform: uppercase;
+font-size: 2rem;
+font-weight: bold;
+margin: 2rem;
+
+}
+
+.hiddenWord {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+#inputLetter {
+    width: 7rem;
+    height: 1.5rem;
+    margin: 1rem;
+}
+
+#nextBtn {
+    margin: 0.7rem;
+}
+
+.emptyLetter {
+    margin: 0.4rem;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+}
